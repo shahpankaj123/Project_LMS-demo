@@ -11,7 +11,7 @@ class Student(models.Model):
     status=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return self.pk
 
 class Staff(models.Model):
 
@@ -53,6 +53,9 @@ class Visitor(models.Model):
     visit_type=models.CharField(max_length=255,choices=visit_choices)
     email=models.EmailField(max_length=255,blank=True)
     address=models.CharField(max_length=255,blank=True)
+
+    def __str__(self):
+        return f'{self.pk}'
 
 class Author(models.Model):
     name=models.CharField(max_length=100)
@@ -168,6 +171,8 @@ class Transaction(models.Model):
                     self.due_date = self.issue_date + timedelta(days=14)
                 elif isinstance(self.borrower, Staff):
                     self.due_date = self.issue_date + timedelta(days=30)
+                elif isinstance(self.borrower, Visitor):   
+                    self.due_date = self.issue_date + timedelta(days=30) 
                 self.book.copies -= 1
                 self.book.save()
             else:
@@ -185,6 +190,8 @@ class Transaction(models.Model):
             raise ValidationError("No copies of the book available for students")
         elif self.borrower_type == "Staff" and self.book.copies <= 0:
             raise ValidationError("No copies of the book available for staff")
+        elif self.borrower_type == "Visitor" and self.book.copies <= 0:
+            raise ValidationError("No copies of the book available for Visitor")
 
 
 class FineSetting(models.Model):
