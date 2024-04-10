@@ -1,10 +1,5 @@
 from rest_framework import serializers
-from lms.models import Book,Transaction
-
-class Bookserializer(serializers.ModelSerializer):
-    class Meta:
-        model = Book
-        exclude = ['img', 'desc']
+from lms.models import Transaction
 
 class Transactionserializer(serializers.ModelSerializer):
     book_title = serializers.ReadOnlyField(source='book.title')

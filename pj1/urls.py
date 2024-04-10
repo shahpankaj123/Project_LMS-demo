@@ -19,5 +19,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('library/api/',include('lms.urls')),
+    path('library/api/',include('lms.dasboard.urls')),
+    path('library/api/group_update/',include('lms.Group_update.urls')),
 ]

@@ -1,13 +1,13 @@
 from django.urls import path,include
-from rest_framework import routers
-from lms.views import CountBook_View,Count_IssuedBook_View,Count_ToadyIssuedBook_View,CountStudent_View,CountStaff_View,Count_ToadyReturnBook_View,List_IssuedBook_View,List_ReturnBook_View
+from rest_framework.routers import DefaultRouter
+from lms.dasboard.views import CountBook_View,Count_IssuedBook_View,Count_ToadyIssuedBook_View,CountStudent_View,CountStaff_View,Count_ToadyReturnBook_View,List_IssuedBook_View,List_ReturnBook_View
 
 
 
-router = routers.SimpleRouter()
+router = DefaultRouter()
 
-#router.register(r'users', TotalBookView)
-#router.register(r'groups', views.GroupViewSet)
+
+
 
 urlpatterns = [
     path('', include(router.urls)),
