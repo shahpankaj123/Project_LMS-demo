@@ -1,14 +1,13 @@
-from lms.models import Book,Staff,Student,Transaction
-from django.db import connection
-from datetime import date
+from lms.models import Book
+
+
 
 from lms.Group_update.serializers import UpdateSubjectSerializer,UpdateLocationSerializer,UpdateRemarksSerializer,UpdateSupplierSerializer,UpdatePublisherSerializer,UpdateBookTypeSerializer,UpdateBookStatusSerializer,UpdateBillInfoSerializer,Update_No_of_page_Serializer,Update_BookPublishedYearSerializer,Update_BookPriceSerializer
 
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework import generics
-from rest_framework.pagination import PageNumberPagination
+
 
 
 class UpdateSubjectView(APIView):
@@ -19,11 +18,9 @@ class UpdateSubjectView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']
             subject = serializer.validated_data['subject']
 
-            # Update subjects for books within the specified accession number range
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(subject=subject)
-            print(connection.queries)
 
             return Response({"Info":"Subject Updates Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -40,7 +37,6 @@ class UpdateLocationView(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(location=location)
-            print(connection.queries)
 
             return Response({"Info":"Location Updates Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
@@ -57,7 +53,6 @@ class UpdateRemarksView(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(remarks=remarks)
-            print(connection.queries)
 
             return Response({"Info":"Remarks Updates Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)      
@@ -75,7 +70,6 @@ class UpdateSupplierView(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(supplier=supplier)
-            print(connection.queries)
 
             return Response({"Info":"Supplier Updates Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
@@ -92,7 +86,6 @@ class UpdatePublisherView(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(publisher=publisher)
-            print(connection.queries)
 
             return Response({"Info":"Publisher Updates Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)       
@@ -109,7 +102,6 @@ class UpdateBookTypeView(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(book_type=book_type)
-            print(connection.queries)
 
             return Response({"Info":"BookType Updates Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
@@ -126,7 +118,6 @@ class UpdateStatusView(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(status=state)
-            print(connection.queries)
 
             return Response({"Info":"BookStatusUpdates Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)     
@@ -144,7 +135,6 @@ class UpdateBill_Info_View(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(bill_number=bill_number,bill_date=bill_date)
-            print(connection.queries)
 
             return Response({"Info":"Bill Details Updated Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)           
@@ -161,7 +151,6 @@ class Update_No_of_page_View(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(page_no=page_no)
-            print(connection.queries)
 
             return Response({"Info":"PageNumber Updated Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
@@ -178,7 +167,6 @@ class Update_BookPublishedYear_View(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(published_year=published_year)
-            print(connection.queries)
 
             return Response({"Info":"Book PublishedYear Updated Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
@@ -196,7 +184,6 @@ class Update_BookPriceView(APIView):
             books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(price=price)
-            print(connection.queries)
 
             return Response({"Info":"Book Price Updated Successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)              
