@@ -1,6 +1,12 @@
 from django.db import models
 from datetime import timedelta
 
+#Barcode Library
+import barcode
+from barcode.writer import ImageWriter
+from PIL import Image, ImageDraw, ImageFont
+from io import BytesIO
+
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.fields import GenericRelation
@@ -58,56 +64,56 @@ class Visitor(models.Model):
         return f'{self.pk}'
 
 class Author(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name
     
 
 class Publisher(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name
 
 class Editor(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name
 
 class Supplier(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name
 
 class Subject(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name
 
 class Language(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name
     
 class Location(models.Model):  
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name  
 
 class Book_Type(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name 
     
 class Remark(models.Model):  
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
         return self.name      
@@ -145,11 +151,47 @@ class Book(models.Model):
     date = models.DateField()
     bill_number = models.PositiveIntegerField()
     bill_date = models.DateField()
+    book_barcode_image= models.ImageField(upload_to="book_barcode_images/",blank=True)
     book_image= models.ImageField(upload_to="book_images/",blank=True)
     desc = models.TextField(blank=True)  # Assuming desc can be blank
 
     def __str__(self):
-        return self.title    
+        return self.title  
+
+    def save(self, *args, **kwargs):
+        if not self.book_barcode_image:
+            accession_barcode = barcode.Code128("Accn No: "+str(self.accession_number), writer=ImageWriter())
+            
+            # Create a BytesIO buffer to hold the barcode image
+            barcode_buffer = BytesIO()
+            
+            # Save the barcode image to the buffer
+            accession_barcode.write(barcode_buffer)
+            
+            # Seek to the beginning of the buffer
+            barcode_buffer.seek(0)
+            
+            # Open the barcode image using Pillow
+            barcode_image = Image.open(barcode_buffer)
+            
+            # Create a blank image with white background for the composite image
+            composite_image = Image.new('RGB', (barcode_image.width, barcode_image.height + 20), 'white')
+            
+            # Paste the barcode image onto the composite image
+            composite_image.paste(barcode_image, (0, 0))
+            
+            # Draw text on the composite image
+            draw = ImageDraw.Draw(composite_image)
+            font = ImageFont.load_default()  # You can change the font as needed
+            text = f'Accn No: {self.accession_number}'
+            draw.text((10, barcode_image.height), text, fill='black', font=font)
+            
+            filename = f"barcode_{self.accession_number}"
+            filepath = f"media/barcode_images/{filename}"
+            accession_barcode.save(filepath)
+            self.book_barcode_image.name = f"barcode_images/{filename}.png"
+        super().save(*args, **kwargs)
+
 
 
 class Transaction(models.Model):

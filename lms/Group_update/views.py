@@ -1,14 +1,12 @@
 from lms.models import Book
 
-
-
 from lms.Group_update.serializers import UpdateSubjectSerializer,UpdateLocationSerializer,UpdateRemarksSerializer,UpdateSupplierSerializer,UpdatePublisherSerializer,UpdateBookTypeSerializer,UpdateBookStatusSerializer,UpdateBillInfoSerializer,Update_No_of_page_Serializer,Update_BookPublishedYearSerializer,Update_BookPriceSerializer
 
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 
-
+#Update List Api Left
 
 class UpdateSubjectView(APIView):
     def put(self, request):

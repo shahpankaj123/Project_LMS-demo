@@ -1,4 +1,4 @@
-from django.urls import path,include
+from django.urls import path
 from lms.Group_update.views import UpdateSubjectView,UpdateLocationView,UpdateRemarksView,UpdateSupplierView,UpdatePublisherView,UpdateBookTypeView,UpdateStatusView,UpdateBill_Info_View,Update_No_of_page_View,Update_BookPriceView,Update_BookPublishedYear_View
 
 
