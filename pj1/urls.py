@@ -25,6 +25,7 @@ urlpatterns = [
     path('library/api/group_update/',include('lms.Group_update.urls')),
     path('library/api/config/',include('lms.Config.urls')),
     path('library/api/book_manage/',include('lms.Manage_book.urls')),
+    path('library/api/fine_setting/',include('lms.setting.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
