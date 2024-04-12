@@ -24,11 +24,6 @@ class Create_SeriesBookSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Invalid status.")
         return value
 
-    def validate_isbn(self, value):
-        if Book.objects.filter(isbn=value).exists():
-            raise serializers.ValidationError("ISBN must be unique.")
-        return value
-
 
 class BookSummary_UodateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,6 +31,33 @@ class BookSummary_UodateSerializer(serializers.ModelSerializer):
         fields=['accession_number','author','book_type','status','book_image', 'desc']
 
 class BookListSerializer(serializers.ModelSerializer):
+    author_name = serializers.SerializerMethodField()
     class Meta:
         model = Book
-        fields=['accession_number','author','title','book_image']        
+        fields=['accession_number','author_name','title','book_image']   
+
+    def get_author_name(self, obj):
+        return obj.author.name if obj.author else None         
+
+
+class BookImg_ListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields=['accession_number','author','book_type','status','book_image', 'book_image']
+
+
+class BookImg_UpdateSerializer(serializers.ModelSerializer):
+
+    def validate_book_image(self, value):
+        if not value.content_type.startswith('image'):
+            raise serializers.ValidationError("Only image files are allowed.")
+        
+        max_size = 10 * 1024 * 1024  # 10MB
+        if value.size > max_size:
+            raise serializers.ValidationError("File size too large. Max size is 10 MB.")
+
+        return value   
+
+    class Meta:
+        model = Book
+        fields=['accession_number','book_image'] 
