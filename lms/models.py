@@ -22,9 +22,9 @@ class Student(models.Model):
 class Staff(models.Model):
 
     member_choices={
-        "Part_Time":"Part Time",
+        "Part_Time":"Part_Time",
         "Teaching":"Teaching",
-        "Non_Teaching":"Non Teaching"
+        "Non_Teaching":"Non_Teaching"
     }
     dep_choices={
         "Civil":"Civil",
@@ -35,7 +35,7 @@ class Staff(models.Model):
     }
     library_id = models.PositiveIntegerField(primary_key=True, unique=True)
     name=models.CharField(max_length=100)
-    number_card=models.IntegerField()
+    number_card=models.CharField(max_length=100)
     membership_type= models.CharField(max_length=255,choices=member_choices) 
     Department= models.CharField(max_length=255,choices=dep_choices)
     email=models.EmailField(max_length=255,blank=True)
@@ -59,6 +59,7 @@ class Visitor(models.Model):
     visit_type=models.CharField(max_length=255,choices=visit_choices)
     email=models.EmailField(max_length=255,blank=True)
     address=models.CharField(max_length=255,blank=True)
+    status=models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.pk}'
