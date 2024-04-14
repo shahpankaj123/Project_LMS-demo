@@ -1,5 +1,7 @@
 from lms.Config.serializers import BarcodeSerializer,AuthorSerializer,PublisherSerializer,SupplierSerializer,SubjectSerializer,LanguageSerializer,EditorSerializer,Book_TypeSerializer,RemarkSerializer,LocationSerializer
 from lms.models import Author,Publisher,Supplier,Subject,Language,Editor,Book_Type,Remark,Location,Book
+from django.http import JsonResponse
+import json
 
 from rest_framework.response import Response
 from rest_framework import status
@@ -7,16 +9,60 @@ from rest_framework import mixins
 from rest_framework import generics
 
 class BarcodeImageView(generics.RetrieveAPIView):
-    serializer_class = BarcodeSerializer
 
-    def get_object(self):
-        book_id = self.kwargs.get('pk')
-        book = generics.get_object_or_404(Book, pk=book_id)
-        if not book.book_barcode_image:
-            return Response({"error": "No barcode image found for this book."}, status=status.HTTP_404_NOT_FOUND)
+    def post(self, request, *args, **kwargs):
+        accession_start_no = request.data.get('accession_start_no')
+        accession_end_no = request.data.get('accession_end_no')
 
-        return book
+        if accession_start_no is None or accession_end_no is None:
+            return JsonResponse({'error': 'Start and end accession numbers are required'}, status=400)
+
+        try:
+            start_no = int(accession_start_no)
+            end_no = int(accession_end_no)
+        except ValueError:
+            return JsonResponse({'error': 'Invalid accession number format'}, status=400)
+
+        if start_no >= end_no:
+            return JsonResponse({'error': 'Start accession number must be less than end accession number'}, status=400)
+
+        barcodes = []
+        for accession_no in range(start_no, end_no + 1):
+             try:
+                barcode_image = Book.objects.get(accession_number=accession_no)
+                for i in range(0, 4):
+                    barcodes.append({'id': accession_no, 'barcode_image': barcode_image.book_barcode_image.url})
+             except Book.DoesNotExist:
+                pass
+
+        return JsonResponse({'barcodes': barcodes})
+
+class RandomBarcodeImageView(generics.RetrieveAPIView): 
+
+    def post(self, request, *args, **kwargs):
+        data=request.data.get('accession_data')
+        print(type(data))
+
+        if data is None:
+            return Response({'info': 'Accession data is required'}, status=status.HTTP_400_BAD_REQUEST)
         
+        '''try:
+            python_data = json.loads(data)
+            print(python_data)
+        except json.JSONDecodeError:
+            return Response({'info':'Invalid Json data'}, status=status.HTTP_400_BAD_REQUEST)'''
+        
+        barcodes = []
+        for accession_no in data:
+             try:
+                barcode_image = Book.objects.get(accession_number=accession_no)
+                for i in range(0,4):
+                   barcodes.append({'id': accession_no, 'barcode_image': barcode_image.book_barcode_image.url})
+             except Book.DoesNotExist:
+                pass
+
+        return JsonResponse({'barcodes': barcodes})
+    
   
 class CreateAuthor_View(mixins.CreateModelMixin,generics.GenericAPIView):
     queryset = Author.objects.all()

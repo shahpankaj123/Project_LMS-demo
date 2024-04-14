@@ -1,10 +1,11 @@
 from django.urls import path
-from lms.Config.views import BarcodeImageView,CreateAuthor_View,CreatePublisher_View,CreateSupplier_View,CreateSubject_View,CreateLanguage_View,CreateEditor_View,CreateBook_Type_View,CreateRemark_View,CreateLocation_View
+from lms.Config.views import BarcodeImageView,CreateAuthor_View,CreatePublisher_View,CreateSupplier_View,CreateSubject_View,CreateLanguage_View,CreateEditor_View,CreateBook_Type_View,CreateRemark_View,CreateLocation_View, RandomBarcodeImageView
 
 
 
 urlpatterns = [
-    path('barcode_image/<int:pk>/', BarcodeImageView.as_view()),
+    path('barcode_image/',BarcodeImageView.as_view()),
+    path('random_barcode/',RandomBarcodeImageView.as_view()),
     path('create-author/',CreateAuthor_View.as_view()),
     path('create-publisher/',CreatePublisher_View.as_view()),
     path('create-supplier/',CreateSupplier_View.as_view()),

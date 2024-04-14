@@ -161,7 +161,7 @@ class Book(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.book_barcode_image:
-            accession_barcode = barcode.Code128("Accn No: "+str(self.accession_number), writer=ImageWriter())
+            accession_barcode = barcode.Code128("Accn No: "+str("{:04d}".format(self.accession_number)), writer=ImageWriter())
             
             # Create a BytesIO buffer to hold the barcode image
             barcode_buffer = BytesIO()
