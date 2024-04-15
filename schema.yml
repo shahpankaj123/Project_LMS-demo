@@ -1,0 +1,1516 @@
+openapi: 3.0.3
+info:
+  title: LMS API
+  version: 1.0.0
+  description: Assigned Task 1
+paths:
+  /library/api/book_manage/Update_BookDesc/:
+    post:
+      operationId: book_manage_Update_BookDesc_create
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: book_manage_Update_BookDesc_update
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/book_manage/Update_book/{id}/:
+    get:
+      operationId: book_manage_Update_book_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: book_manage_Update_book_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/book_manage/advanced_Booksearch/:
+    get:
+      operationId: book_manage_advanced_Booksearch_retrieve
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: book_manage_advanced_Booksearch_create
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/book_manage/create_SeriesBook/:
+    get:
+      operationId: book_manage_create_SeriesBook_retrieve
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: book_manage_create_SeriesBook_create
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/book_manage/create_customBook/:
+    post:
+      operationId: book_manage_create_customBook_create
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/book_manage/update_bookimg/:
+    post:
+      operationId: book_manage_update_bookimg_create
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: book_manage_update_bookimg_update
+      tags:
+      - book_manage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/config/barcode_image/:
+    get:
+      operationId: config_barcode_image_retrieve
+      tags:
+      - config
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: config_barcode_image_create
+      tags:
+      - config
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/config/create-author/:
+    post:
+      operationId: config_create_author_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Author'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Author'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+  /library/api/config/create-book_type/:
+    post:
+      operationId: config_create_book_type_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book_Type'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Book_Type'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Book_Type'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book_Type'
+          description: ''
+  /library/api/config/create-editor/:
+    post:
+      operationId: config_create_editor_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Editor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Editor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Editor'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Editor'
+          description: ''
+  /library/api/config/create-language/:
+    post:
+      operationId: config_create_language_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Language'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Language'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+          description: ''
+  /library/api/config/create-location/:
+    post:
+      operationId: config_create_location_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Location'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Location'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+          description: ''
+  /library/api/config/create-publisher/:
+    post:
+      operationId: config_create_publisher_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Publisher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Publisher'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Publisher'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publisher'
+          description: ''
+  /library/api/config/create-remarks/:
+    post:
+      operationId: config_create_remarks_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Remark'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Remark'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Remark'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Remark'
+          description: ''
+  /library/api/config/create-subject/:
+    post:
+      operationId: config_create_subject_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Subject'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Subject'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+          description: ''
+  /library/api/config/create-supplier/:
+    post:
+      operationId: config_create_supplier_create
+      tags:
+      - config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+          description: ''
+  /library/api/config/random_barcode/:
+    get:
+      operationId: config_random_barcode_retrieve
+      tags:
+      - config
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: config_random_barcode_create
+      tags:
+      - config
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/count_book/:
+    get:
+      operationId: count_book_retrieve
+      tags:
+      - count_book
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/count_staff/:
+    get:
+      operationId: count_staff_retrieve
+      tags:
+      - count_staff
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/count_student/:
+    get:
+      operationId: count_student_retrieve
+      tags:
+      - count_student
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/fine_setting/:
+    get:
+      operationId: fine_setting_list
+      tags:
+      - fine_setting
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FineSetting'
+          description: ''
+    post:
+      operationId: fine_setting_create
+      tags:
+      - fine_setting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FineSetting'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FineSetting'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FineSetting'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineSetting'
+          description: ''
+  /library/api/fine_setting/{id}/:
+    delete:
+      operationId: fine_setting_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - fine_setting
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /library/api/fine_setting/get_booktype/:
+    get:
+      operationId: fine_setting_get_booktype_list
+      tags:
+      - fine_setting
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookType'
+          description: ''
+  /library/api/group_update/update-bill_info/:
+    put:
+      operationId: group_update_update_bill_info_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-book_price/:
+    put:
+      operationId: group_update_update_book_price_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-book_published_year/:
+    put:
+      operationId: group_update_update_book_published_year_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-bookstatus/:
+    put:
+      operationId: group_update_update_bookstatus_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-booktype/:
+    put:
+      operationId: group_update_update_booktype_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-location/:
+    put:
+      operationId: group_update_update_location_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-page_no/:
+    put:
+      operationId: group_update_update_page_no_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-publisher/:
+    put:
+      operationId: group_update_update_publisher_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-remarks/:
+    put:
+      operationId: group_update_update_remarks_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-subject/:
+    put:
+      operationId: group_update_update_subject_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/group_update/update-supplier/:
+    put:
+      operationId: group_update_update_supplier_update
+      tags:
+      - group_update
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/issued_book_count/:
+    get:
+      operationId: issued_book_count_retrieve
+      tags:
+      - issued_book_count
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/list_issuedbook/:
+    get:
+      operationId: list_issuedbook_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - list_issuedbook
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionserializerList'
+          description: ''
+    post:
+      operationId: list_issuedbook_create
+      tags:
+      - list_issuedbook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transactionserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transactionserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transactionserializer'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transactionserializer'
+          description: ''
+  /library/api/list_returnbook/:
+    get:
+      operationId: list_returnbook_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - list_returnbook
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionserializerList'
+          description: ''
+    post:
+      operationId: list_returnbook_create
+      tags:
+      - list_returnbook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transactionserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transactionserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transactionserializer'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transactionserializer'
+          description: ''
+  /library/api/manage_member/activestudent/:
+    get:
+      operationId: manage_member_activestudent_retrieve
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/manage_member/listGuest_visitor/:
+    get:
+      operationId: manage_member_listGuest_visitor_list
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Visitor'
+          description: ''
+  /library/api/manage_member/listcreate_staff/:
+    get:
+      operationId: manage_member_listcreate_staff_list
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Staff'
+          description: ''
+    post:
+      operationId: manage_member_listcreate_staff_create
+      tags:
+      - manage_member
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Staff'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+  /library/api/manage_member/listcreate_visitor/:
+    get:
+      operationId: manage_member_listcreate_visitor_list
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Visitor'
+          description: ''
+    post:
+      operationId: manage_member_listcreate_visitor_create
+      tags:
+      - manage_member
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Visitor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Visitor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Visitor'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visitor'
+          description: ''
+  /library/api/manage_member/listinactive_visitor/:
+    get:
+      operationId: manage_member_listinactive_visitor_list
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Visitor'
+          description: ''
+  /library/api/manage_member/singlestudent_list/{id}/:
+    get:
+      operationId: manage_member_singlestudent_list_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/manage_member/student_list/:
+    get:
+      operationId: manage_member_student_list_retrieve
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/manage_member/update-status/{id}/:
+    put:
+      operationId: manage_member_update_status_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/manage_member/update_staff/{id}/:
+    get:
+      operationId: manage_member_update_staff_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Staff'
+          description: ''
+    put:
+      operationId: manage_member_update_staff_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - manage_member
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Staff'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+  /library/api/manage_member/update_visitor/{id}/:
+    get:
+      operationId: manage_member_update_visitor_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - manage_member
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Visitor'
+          description: ''
+    put:
+      operationId: manage_member_update_visitor_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - manage_member
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Visitor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Visitor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Visitor'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visitor'
+          description: ''
+  /library/api/report/due_allbook/:
+    get:
+      operationId: report_due_allbook_retrieve
+      tags:
+      - report
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/report/due_bookreport/:
+    post:
+      operationId: report_due_bookreport_create
+      tags:
+      - report
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/report/issue_report/:
+    post:
+      operationId: report_issue_report_create
+      tags:
+      - report
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/report/location_report/:
+    get:
+      operationId: report_location_report_retrieve
+      tags:
+      - report
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: report_location_report_create
+      tags:
+      - report
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/report/return_report/:
+    post:
+      operationId: report_return_report_create
+      tags:
+      - report
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/todayissued_book_count/:
+    get:
+      operationId: todayissued_book_count_retrieve
+      tags:
+      - todayissued_book_count
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/todayreturn_book_count/:
+    get:
+      operationId: todayreturn_book_count_retrieve
+      tags:
+      - todayreturn_book_count
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /library/api/transction/:
+    get:
+      operationId: transction_retrieve
+      tags:
+      - transction
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: transction_create
+      tags:
+      - transction
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    Author:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    BookType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - id
+      - name
+    Book_Type:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    DepartmentEnum:
+      enum:
+      - Civil
+      - IT
+      - Software
+      - Management
+      type: string
+      description: |-
+        * `Civil` - Civil
+        * `IT` - IT
+        * `Software` - Software
+        * `Management` - Management
+    Editor:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    FineSetting:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        member_type:
+          $ref: '#/components/schemas/MemberTypeEnum'
+        no_of_days:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        fine_amt:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        date:
+          type: string
+          format: date
+        book_type:
+          type: integer
+      required:
+      - book_type
+      - date
+      - fine_amt
+      - id
+      - member_type
+      - no_of_days
+    Language:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    MemberTypeEnum:
+      enum:
+      - Staff
+      - Student
+      - Visitor
+      type: string
+      description: |-
+        * `Staff` - Staff
+        * `Student` - Student
+        * `Visitor` - Visitor
+    PaginatedTransactionserializerList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transactionserializer'
+    Publisher:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    Remark:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    Staff:
+      type: object
+      properties:
+        library_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        name:
+          type: string
+          maxLength: 100
+        number_card:
+          type: string
+          maxLength: 100
+        membership_type:
+          $ref: '#/components/schemas/StaffMembershipTypeEnum'
+        Department:
+          $ref: '#/components/schemas/DepartmentEnum'
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        phone:
+          type: string
+          maxLength: 20
+      required:
+      - Department
+      - library_id
+      - membership_type
+      - name
+      - number_card
+    StaffMembershipTypeEnum:
+      enum:
+      - Part_Time
+      - Teaching
+      - Non_Teaching
+      type: string
+      description: |-
+        * `Part_Time` - Part_Time
+        * `Teaching` - Teaching
+        * `Non_Teaching` - Non_Teaching
+    Subject:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    Supplier:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    Transactionserializer:
+      type: object
+      properties:
+        accession_number:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          readOnly: true
+        book_title:
+          type: string
+          readOnly: true
+        book_author:
+          type: string
+          readOnly: true
+      required:
+      - accession_number
+      - book_author
+      - book_title
+    VisitTypeEnum:
+      enum:
+      - Principal
+      - Teacher
+      - Chairman
+      type: string
+      description: |-
+        * `Principal` - Principal
+        * `Teacher` - Teacher
+        * `Chairman` - Chairman
+    Visitor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 20
+        designation:
+          type: string
+          maxLength: 255
+        Referred_by:
+          type: string
+          maxLength: 255
+        Referrer_phone:
+          type: string
+          maxLength: 20
+        membership_type:
+          $ref: '#/components/schemas/VisitorMembershipTypeEnum'
+        visit_type:
+          $ref: '#/components/schemas/VisitTypeEnum'
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        address:
+          type: string
+          maxLength: 255
+        status:
+          type: boolean
+      required:
+      - Referred_by
+      - id
+      - membership_type
+      - name
+      - visit_type
+    VisitorMembershipTypeEnum:
+      enum:
+      - Guest_Visistor
+      type: string
+      description: '* `Guest_Visistor` - Guest_Visistor'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
