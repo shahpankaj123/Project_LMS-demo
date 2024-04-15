@@ -162,28 +162,16 @@ class Book(models.Model):
     def save(self, *args, **kwargs):
         if not self.book_barcode_image:
             accession_barcode = barcode.Code128("Accn No: "+str("{:04d}".format(self.accession_number)), writer=ImageWriter())
-            
-            # Create a BytesIO buffer to hold the barcode image
             barcode_buffer = BytesIO()
-            
-            # Save the barcode image to the buffer
             accession_barcode.write(barcode_buffer)
-            
-            # Seek to the beginning of the buffer
             barcode_buffer.seek(0)
-            
-            # Open the barcode image using Pillow
             barcode_image = Image.open(barcode_buffer)
             
-            # Create a blank image with white background for the composite image
             composite_image = Image.new('RGB', (barcode_image.width, barcode_image.height + 20), 'white')
-            
-            # Paste the barcode image onto the composite image
             composite_image.paste(barcode_image, (0, 0))
-            
-            # Draw text on the composite image
+        
             draw = ImageDraw.Draw(composite_image)
-            font = ImageFont.load_default()  # You can change the font as needed
+            font = ImageFont.load_default() 
             text = f'Accn No: {self.accession_number}'
             draw.text((10, barcode_image.height), text, fill='black', font=font)
             
