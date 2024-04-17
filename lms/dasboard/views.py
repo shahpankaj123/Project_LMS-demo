@@ -36,7 +36,7 @@ class CountStudent_View(APIView):
     def get(self, request, format=None):
         data={}
         try:
-            total_student=Student.objects.filter(school_id=2).count()
+            total_student=Student.objects.filter(SchoolID=2).count()
             data['total_students'] = total_student
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR) 
@@ -94,7 +94,7 @@ class Count_ToadyReturnBook_View(APIView):
            
 
 class List_IssuedBook_View(generics.ListCreateAPIView):
-    queryset =Transaction.objects.filter(school_id=2,return_status='N').select_related('book').order_by('-issue_date').only('book__title','book__accession_number','book__author')
+    queryset =Transaction.objects.filter(school_id=1,return_status='N').select_related('book').order_by('-issue_date').only('book__title','book__accession_number','book__author')
     serializer_class =Transactionserializer
     pagination_class =TranscitionPagination
 

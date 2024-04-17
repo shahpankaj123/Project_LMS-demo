@@ -82,6 +82,7 @@ class Visitor(models.Model):
 
 class Author(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -90,6 +91,7 @@ class Author(models.Model):
 
 class Publisher(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -97,6 +99,7 @@ class Publisher(models.Model):
 
 class Editor(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -104,6 +107,7 @@ class Editor(models.Model):
 
 class Supplier(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -111,13 +115,15 @@ class Supplier(models.Model):
 
 class Subject(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
-        return self.name
+        return self.name+str(self.id)
 
 class Language(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -125,6 +131,7 @@ class Language(models.Model):
     
 class Location(models.Model):  
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -132,6 +139,7 @@ class Location(models.Model):
 
 class Book_Type(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -139,6 +147,7 @@ class Book_Type(models.Model):
     
 class Remark(models.Model):  
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     name=models.CharField(max_length=100,unique=True)
 
     def __str__(self):
@@ -184,11 +193,11 @@ class Book(models.Model):
         return self.title  
 
 class Transaction(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE,blank=True)
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE,blank=True)
-    visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE,blank=True)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE,blank=True,null=True)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE,blank=True,null=True)
+    visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE,blank=True,null=True)
 
-    school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL,null=True)
+    school_id  = models.ForeignKey(CBSESchool, on_delete=models.CASCADE)
     book = models.ForeignKey(Book,on_delete=models.CASCADE)
     issue_date = models.DateField()
     due_date = models.DateField(blank=True)

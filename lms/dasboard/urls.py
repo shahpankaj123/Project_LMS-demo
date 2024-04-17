@@ -8,7 +8,6 @@ router = DefaultRouter()
 
 
 
-
 urlpatterns = [
     path('', include(router.urls)),
     path('count_book/',CountBook_View.as_view()),

@@ -16,7 +16,7 @@ class UpdateSubjectView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']
             subject = serializer.validated_data['subject']
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(subject=subject)
 
@@ -32,7 +32,7 @@ class UpdateLocationView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']
             location = serializer.validated_data['location']
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(location=location)
 
@@ -48,7 +48,7 @@ class UpdateRemarksView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']
             remarks = serializer.validated_data['remarks']
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(remarks=remarks)
 
@@ -65,7 +65,7 @@ class UpdateSupplierView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']
             supplier= serializer.validated_data['supplier']
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(supplier=supplier)
 
@@ -81,7 +81,7 @@ class UpdatePublisherView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']
             publisher= serializer.validated_data['publisher']
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(publisher=publisher)
 
@@ -97,7 +97,7 @@ class UpdateBookTypeView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']           
             book_type= serializer.validated_data['book_type']           
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(book_type=book_type)
 
@@ -113,7 +113,7 @@ class UpdateStatusView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']           
             state= serializer.validated_data['status']           
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(status=state)
 
@@ -130,7 +130,7 @@ class UpdateBill_Info_View(APIView):
             bill_number= serializer.validated_data['bill_number'] 
             bill_date= serializer.validated_data['bill_date']          
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(bill_number=bill_number,bill_date=bill_date)
 
@@ -146,7 +146,7 @@ class Update_No_of_page_View(APIView):
             accession_number2 = serializer.validated_data['accession_number2']           
             page_no= serializer.validated_data['page_no']          
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(page_no=page_no)
 
@@ -162,7 +162,7 @@ class Update_BookPublishedYear_View(APIView):
             accession_number2 = serializer.validated_data['accession_number2']           
             published_year= serializer.validated_data['published_year']          
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(published_year=published_year)
 
@@ -179,7 +179,7 @@ class Update_BookPriceView(APIView):
             accession_number2 = serializer.validated_data['accession_number2']           
             price= serializer.validated_data['price']          
 
-            books_to_update = Book.objects.filter(accession_number__gte=accession_number1,
+            books_to_update = Book.objects.filter(school_id=1,accession_number__gte=accession_number1,
                                                    accession_number__lte=accession_number2)
             books_to_update.update(price=price)
 
