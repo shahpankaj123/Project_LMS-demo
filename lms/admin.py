@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import *
+from lms.models import *
+from lms.models1 import *
 
 
 admin.site.register(Staff)
+admin.site.register(CBSESchool)
 admin.site.register(Student)
 admin.site.register(Visitor)
 admin.site.register(Author)

@@ -10,7 +10,7 @@ urlpatterns = [
     #staff
 
     path('listcreate_staff/',CreateListStaff_View.as_view()),
-    path('update_staff/<int:pk>/',UpdateStaff_View.as_view()),
+    path('update_staff/<int:pk>/',UpdateStaff_View.as_view()),#correction
 
     #visitor
     path('listcreate_visitor/',CreateListVisitor_View.as_view()),

@@ -61,8 +61,8 @@ class SubjectSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Subject cannot be empty")
         if len(value) < 3:
             raise serializers.ValidationError("Subject must have alteast 3 characters")
-        if  value.isalnum():
-            raise serializers.ValidationError("Subject must not consist  of alphanumeric characters")
+        #if  value.isalnum():
+            #raise serializers.ValidationError("Subject must not consist  of alphanumeric characters")
         return value
 
 class LanguageSerializer(serializers.ModelSerializer):
@@ -75,8 +75,8 @@ class LanguageSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Language cannot be empty")
         if len(value) < 3:
             raise serializers.ValidationError("Language must have alteast 3 characters")
-        if  value.isalnum():
-            raise serializers.ValidationError("Language must not consist  of alphanumeric characters")
+        #if  value.isalnum():
+            #raise serializers.ValidationError("Language must not consist  of alphanumeric characters")
         return value
 
 class EditorSerializer(serializers.ModelSerializer):
@@ -117,7 +117,7 @@ class RemarkSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Remark cannot be empty")
         if len(value) < 3:
             raise serializers.ValidationError("Remark must have alteast 3 characters")
-        if  value.isalnum():
+        if not value.isalnum():
             raise serializers.ValidationError("Remark must not consist  of alphanumeric characters")
         return value
 
@@ -131,7 +131,7 @@ class LocationSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Location cannot be empty")
         if len(value) < 2:
             raise serializers.ValidationError("Location must have alteast 2 characters")
-        if  value.isalnum():
+        if not value.isalnum():
             raise serializers.ValidationError("Location must not consist  of alphanumeric characters")
         return value    
 
