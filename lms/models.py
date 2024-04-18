@@ -155,11 +155,6 @@ class Remark(models.Model):
 
 class Book(models.Model):
 
-    status_choices={
-        "Available":"Available",
-        "UnAvailable":"UnAvailable"
-    }
-
     accession_number = models.PositiveIntegerField(primary_key=True, unique=True)
     school_id  = models.ForeignKey(CBSESchool, on_delete=models.SET_NULL, null=True, blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books_written')
@@ -181,7 +176,7 @@ class Book(models.Model):
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     book_type = models.ForeignKey(Book_Type, on_delete=models.CASCADE)
-    status = models.CharField(max_length=255,choices=status_choices)  
+    status = models.BooleanField(default=True) 
     isbn = models.CharField(max_length=13)
     date = models.DateField()
     bill_number = models.PositiveIntegerField()
@@ -193,6 +188,10 @@ class Book(models.Model):
         return self.title  
 
 class Transaction(models.Model):
+    issue_type_choice={
+        "New":"New",
+        "Old":"Old"
+    }
     student = models.ForeignKey(Student, on_delete=models.CASCADE,blank=True,null=True)
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE,blank=True,null=True)
     visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE,blank=True,null=True)
@@ -200,6 +199,7 @@ class Transaction(models.Model):
     school_id  = models.ForeignKey(CBSESchool, on_delete=models.CASCADE)
     book = models.ForeignKey(Book,on_delete=models.CASCADE)
     issue_date = models.DateField()
+    issue_type=models.CharField(max_length=100,choices=issue_type_choice,null=True)
     due_date = models.DateField(blank=True)
     return_date = models.DateField(blank=True, null=True)
     return_status = models.CharField(max_length=20, choices=(('Y', 'Yes'), ('N', 'No')),default="N")

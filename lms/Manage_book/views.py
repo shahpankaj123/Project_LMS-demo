@@ -102,7 +102,8 @@ class AdvancedSearchBook_View(APIView):
     data={
             "publisher":"publisher",
             "author":"author",
-            "supplier":"supplier"
+            "supplier":"supplier",
+            "accession_number":"accession_number"
         }
     def get(self, request, format=None):
         return Response({'info':'SearchList','data':self.data}, status=status.HTTP_200_OK)
@@ -113,6 +114,11 @@ class AdvancedSearchBook_View(APIView):
 
         if not search_data or not search_option:
             return Response({"error": "search_input and search_option are required."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if search_option== "accession_number":
+            books = Book.objects.get(accession_number=search_data)
+            book_serializer = BookListSerializer(books)
+            return Response({'info':'Success','data':book_serializer.data}, status=status.HTTP_200_OK)
         
         for value in self.data.values():
             if value == search_option:
